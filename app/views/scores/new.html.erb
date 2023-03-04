@@ -1,0 +1,61 @@
+<%= render "layouts/navbar" %>
+<div class="container" style="padding-top: 80px;">
+  <h1>対局結果登録</h1>
+  <hr>
+
+  <p>対局結果を登録します。
+  対局日、参加者の名前、スコアを入力してください。</p>
+
+  <%= form_with model: @score do |f| %>
+    <div class="form-group mt-3 mb-3" >
+      <%= f.label :date %>
+      <%= f.date_field :date, class: "form-control"%>
+      <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">順位</th>
+          <th scope="col"></th>
+          <th scope="col">参加者名</th>
+          <th scope="col"></th>
+          <th scope="col">点数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td><%= f.label :first_participantID %></td>
+          <td><%= f.select :first_participantID, @participants.map{ |participant| [participant.name, participant.id] }, { include_blank: true }, class: "form-select"%></td>
+          <td><%= f.label :first_score %></td>
+          <td><%= f.text_field :first_score, class: "form-control", placeholder: "1位の点数を入力してください。" %></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td><%= f.label :second_participantID %></td>
+          <td><%= f.select :second_participantID, @participants.map{ |participant| [participant.name, participant.id] }, { include_blank: true }, class: "form-select"%></td>
+          <td><%= f.label :second_score %></td>
+          <td><%= f.text_field :second_score, class: "form-control", placeholder: "2位の点数を入力してください。" %></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td><%= f.label :third_participantID %></td>
+          <td><%= f.select :third_participantID, @participants.map{ |participant| [participant.name, participant.id] }, { include_blank: true }, class: "form-select"%></td>
+          <td><%= f.label :third_score %></td>
+          <td><%= f.text_field :third_score, class: "form-control", placeholder: "3位の点数を入力してください。" %></td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td><%= f.label :fourth_participantID %></td>
+          <td><%= f.select :fourth_participantID, @participants.map{ |participant| [participant.name, participant.id] }, { include_blank: true }, class: "form-select"%></td>
+          <td><%= f.label :fourth_score %></td>
+          <td><%= f.text_field :fourth_score, class: "form-control", placeholder: "4位の点数を入力してください。" %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="d-flex gap-3">
+      <%= link_to "戻る", participants_path, class: "btn btn-secondary" %>
+      <%= f.submit :"登録", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
