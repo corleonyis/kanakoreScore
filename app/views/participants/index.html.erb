@@ -1,17 +1,13 @@
 <%= render "layouts/navbar" %>
 <div class="container" style="padding-top: 80px;">
+  <h1>参加者一覧</h1>
+  <hr>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>参加者名</th>
         <th>ハンデ</th>
-        <th>スコア</th>
-        <th>1位</th>
-        <th>2位</th>
-        <th>3位</th>
-        <th>4位</th>
-        <th>役満回数</th>
-        <th>対戦回数</th>
+        <th>FCメンバー</th>
       </tr>
     </thead>
     <tbody>
@@ -19,15 +15,13 @@
         <tr>
           <td><%= participant.name %></td>
           <td><%= participant.handicap %></td>
-          <td>30</td>
-          <td>5</td>
-          <td>3</td>
-          <td>6</td>
-          <td>2</td>
-          <td>1</td>
-          <td>15</td>
+          <td><%= participant.isMember ? "◯" : "×" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <div class="mt-3 mb-3">
+    <%= link_to "追加", new_participant_path, class: "btn btn-primary" %>
+  </div>
 </div>

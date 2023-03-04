@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   root "results#index"
 
+  resources :participants
+  
 end
