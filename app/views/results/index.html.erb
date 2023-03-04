@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>かなこれ杯 集計結果</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>参加者名</th>
+        <th>ハンデ</th>
+        <th>スコア</th>
+        <th>1位</th>
+        <th>2位</th>
+        <th>3位</th>
+        <th>4位</th>
+        <th>役満回数</th>
+        <th>対戦回数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @participants.each do |participant| %>
+        <tr>
+          <td><%= participant.name %></td>
+          <td><%= participant.handicap %></td>
+          <td>30</td>
+          <td>5</td>
+          <td>3</td>
+          <td>6</td>
+          <td>2</td>
+          <td>1</td>
+          <td>15</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
