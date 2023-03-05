@@ -14,6 +14,7 @@
         <th></th>
         <th>4位</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +29,7 @@
           <td><%= score.third_score %></td>
           <td><%= participant_name(score.fourth_participantID) %></td>
           <td><%= score.fourth_score %></td>
+          <td><%= link_to "編集", edit_score_path(score) %></td>
         </tr>
       <% end %>
     </tbody>

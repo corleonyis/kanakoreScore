@@ -25,8 +25,8 @@ class ParticipantsController < ApplicationController
     @participant = Participant.find(params[:id])
 
     # ハンデは最終的な得点に影響するので、再計算
-    @participant.total_point = @participant.game_point + @participant.handicap
-    @participant.update(participant_params)
+    @participant.total_point = @participant.game_point + participant_params[:handicap].to_i
+    @participant.update(participant_params.merge(total_point: @participant.total_point))
     redirect_to participants_path
   end
 
@@ -36,6 +36,6 @@ class ParticipantsController < ApplicationController
 
   private
     def participant_params
-      params.require(:participant).permit(:name, :handicap, :isMember, :total_point)
+      params.require(:participant).permit(:name, :handicap, :isMember)
     end
 end
