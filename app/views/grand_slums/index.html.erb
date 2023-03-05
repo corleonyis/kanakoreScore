@@ -1,0 +1,28 @@
+<%= render "layouts/navbar" %>
+<div class="container" style="padding-top: 80px;">
+  <h1>役満達成者一覧</h1>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>名前</th>
+        <th>役</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @grand_slums.each do |grand_slum| %>
+        <tr>
+          <td><%= grand_slum.date %></td>
+          <td><%= participant_name(grand_slum.participant_id) %></td>
+          <td><%= grand_slum.name %></td>
+          <td><%= link_to "編集", edit_grand_slum_path(grand_slum) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="mt-3 mb-3">
+    <%= link_to "追加", new_grand_slum_path, class: "btn btn-primary" %>
+  </div>
+</div>

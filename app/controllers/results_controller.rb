@@ -7,6 +7,7 @@ class ResultsController < ApplicationController
   # 個人戦績表示
   def show
     @participant = Participant.find(params[:id])
+    @grand_slums = GrandSlum.where(participant_id: params[:id])
     @scores = get_scores(params[:id])
   end
 end

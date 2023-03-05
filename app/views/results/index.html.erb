@@ -26,7 +26,7 @@
           <td><%= participant.second %></td>
           <td><%= participant.third %></td>
           <td><%= participant.fourth %></td>
-          <td>0</td>
+          <td><%= get_number_grand_slum(participant.id) %></td>
           <td><%= participant.total_games %></td>
         </tr>
       <% end %>

@@ -1,0 +1,2 @@
+class GrandSlum < ApplicationRecord
+end
