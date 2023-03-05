@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :scores
   resources :grand_slums
   get "results/:id", to: "results#show", as: "result"
-
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 end

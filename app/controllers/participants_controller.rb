@@ -1,5 +1,5 @@
 class ParticipantsController < ApplicationController
-  # TODO:管理者のみアクセスできるようにbefore_actionを設定する
+  before_action :require_login, only: [:new, :create, :edit, :update, :show, :destory]
 
   # 参加者の一覧
   def index

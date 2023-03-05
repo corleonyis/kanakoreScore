@@ -1,4 +1,6 @@
 class GrandSlumsController < ApplicationController
+  before_action :require_login, only: [:new, :create, :edit, :update, :show, :destory]
+
   # 役満達成者一覧
   def index
     @grand_slums = GrandSlum.all

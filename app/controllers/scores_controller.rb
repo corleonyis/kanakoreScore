@@ -1,5 +1,5 @@
 class ScoresController < ApplicationController
-  # TODO: 管理者のみアクセスできるようにbefore_actionを設定する
+  before_action :require_login, only: [:new, :create, :edit, :update, :show, :destory]
   
   # 対戦記録一覧
   def index

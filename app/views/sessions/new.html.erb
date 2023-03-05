@@ -1,0 +1,18 @@
+<%= render "layouts/navbar" %>
+<div class="mx-auto" style="width: 500px; padding-top: 80px;">
+  <h1>ログイン</h1>
+
+  <%= form_with model: @session, local: true do |form| %>
+    <div class="form-group mt-3 mb-3">
+      <% if flash[:danger] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash[:danger] %>
+        </div>
+      <% end %>
+      <%= form.label :name, 'コード', class: "mt-2" %>
+      <%= form.text_field :name, class: "form-control mt-2", placeholder: "コードを入力" %>
+    </div>
+
+    <%= form.submit 'ログイン', class: "btn btn-primary" %>
+  <% end %>
+</div>
