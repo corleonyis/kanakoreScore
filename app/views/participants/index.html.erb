@@ -7,7 +7,8 @@
       <tr>
         <th>参加者名</th>
         <th>ハンデ</th>
-        <th>FCメンバー</th>
+        <th>FCメンバー / FC関係者</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -15,7 +16,8 @@
         <tr>
           <td><%= participant.name %></td>
           <td><%= participant.handicap %></td>
-          <td><%= participant.isMember ? "◯" : "×" %></td>
+          <td><%= participant.isMember ? "FCメンバー" : "FC関係者" %></td>
+          <td><%= link_to "編集", edit_participant_path(participant) %></td>
         </tr>
       <% end %>
     </tbody>

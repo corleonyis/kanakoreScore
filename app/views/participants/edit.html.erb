@@ -1,0 +1,22 @@
+<%= render "layouts/navbar" %>
+<div class="container" style="padding-top: 80px;">
+  <h1>参加者登録情報の変更</h1>
+  <hr>
+
+  <p>参加者の名前、ハンデ、FCメンバー or FC関係者を変更できます。</p>
+
+  <%= form_with model: @participant do |f| %>
+    <div class="form-group mt-3 mb-3" >
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control", placeholder: "例：ろうか"%>
+      <%= f.label :handicap %>
+      <%= f.text_field :handicap, class: "form-control", placeholder: "例：-100"%>
+      <%= f.label :isMember %>
+      <%= f.select :isMember, [['FCメンバー', true],['FC関係者', false]], { include_blank: false, selected: @participant.isMember}, class: "form-select"%>
+    </div>
+    <div class="d-flex gap-3">
+      <%= link_to "戻る", participants_path, class: "btn btn-secondary" %>
+      <%= f.submit :"決定", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
