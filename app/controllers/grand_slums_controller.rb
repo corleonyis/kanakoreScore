@@ -20,11 +20,13 @@ class GrandSlumsController < ApplicationController
   # 役満達成者編集
   def edit
     @grand_slum = GrandSlum.find(params[:id])
+    @participants = Participant.all
   end
 
   def update
     @grand_slum = GrandSlum.find(params[:id])
     @grand_slum.update(grand_slum_params)
+    redirect_to grand_slums_path
   end
 
   private

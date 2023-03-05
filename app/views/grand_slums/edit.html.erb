@@ -1,0 +1,23 @@
+<%= render "layouts/navbar" %>
+<div class="container" style="padding-top: 80px;">
+  <h1>役満達成者の変更</h1>
+  <hr>
+
+  <p>役満達成者の変更を行います。
+  対局日、達成者の名前、役満の名前を入力してください。</p>
+
+  <%= form_with model: @grand_slum do |f| %>
+    <div class="form-group mt-3 mb-3" >
+      <%= f.label :date %>
+      <%= f.date_field :date, class: "form-control"%>
+      <%= f.label :participant_id %>
+      <%= f.select :participant_id, @participants.map{ |participant| [participant.name, participant.id] }, { include_blank: true }, class: "form-select"%>
+      <%= f.label :name %>
+      <%= f.select :name, ["天和", "地和", "大三元", "大四喜", "小四喜", "四暗刻", "清老頭", "四槓子", "字一色", "緑一色", "国士無双", "九連宝燈"], { include_blank: false }, class: "form-select"%>
+    </div>
+    <div class="d-flex gap-3">
+      <%= link_to "戻る", participants_path, class: "btn btn-secondary" %>
+      <%= f.submit :"決定", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
