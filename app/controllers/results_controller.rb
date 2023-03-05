@@ -1,7 +1,7 @@
 class ResultsController < ApplicationController
   # 集計結果表示
   def index
-    @participants = Participant.all.order(total_point: "DESC")
+    @participants = Participant.where("total_games > ?", 0).order(total_point: "DESC")
   end
 
   # 個人戦績表示
