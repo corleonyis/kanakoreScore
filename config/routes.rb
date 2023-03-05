@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :participants
   resources :scores
-  
+  get "results/:id", to: "results#show", as: "result"
+
 end

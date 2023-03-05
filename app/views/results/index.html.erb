@@ -18,7 +18,7 @@
     <tbody>
       <% @participants.each do |participant| %>
         <tr>
-          <td><%= participant.name %></td>
+          <td><%= link_to participant.name, result_path(participant.id) %></td>
           <td><%= participant.handicap %></td>
           <td><%= participant.game_point %></td>
           <td><%= participant.total_point %></td>
