@@ -14,6 +14,13 @@ class ScoresController < ApplicationController
 
   def create
     @score = Score.create(score_params)
+
+    # 各参加者の合計スコアを更新する
+    update_participantInfo(@score.first_participantID, @score.first_score, 1)     # 1位
+    update_participantInfo(@score.second_participantID, @score.second_score, 2)   # 2位
+    update_participantInfo(@score.third_participantID, @score.third_score, 3)     # 3位
+    update_participantInfo(@score.fourth_participantID, @score.fourth_score, 4)   # 4位
+
     redirect_to scores_path
   end
 

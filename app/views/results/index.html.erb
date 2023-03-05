@@ -5,7 +5,8 @@
       <tr>
         <th>参加者名</th>
         <th>ハンデ</th>
-        <th>スコア</th>
+        <th>現在の得点</th>
+        <th>現在の得点 + ハンデ</th>
         <th>1位</th>
         <th>2位</th>
         <th>3位</th>
@@ -19,13 +20,14 @@
         <tr>
           <td><%= participant.name %></td>
           <td><%= participant.handicap %></td>
-          <td>30</td>
-          <td>5</td>
-          <td>3</td>
-          <td>6</td>
-          <td>2</td>
-          <td>1</td>
-          <td>15</td>
+          <td><%= participant.game_point %></td>
+          <td><%= participant.total_point %></td>
+          <td><%= participant.first %></td>
+          <td><%= participant.second %></td>
+          <td><%= participant.third %></td>
+          <td><%= participant.fourth %></td>
+          <td>0</td>
+          <td><%= participant.total_games %></td>
         </tr>
       <% end %>
     </tbody>
