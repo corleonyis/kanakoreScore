@@ -50,8 +50,8 @@ test:
 #
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USER"]%>
   password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
-  host: localhost
-  socket: /cloudsql/kanakore:asia-northeast1:kanakore-score
+  host: <%= ENV["DATABASE_HOST"] %>
+  socket: <%= ENV["DATABASE_SOCKET"] %>

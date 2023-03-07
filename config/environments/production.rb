@@ -92,6 +92,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.hosts << "kanakorescore-p6bcvthycq-an.a.run.app"
-  config.web_console.allowed_ips = '127.0.0.0/127.255.255.255'
 
 end
