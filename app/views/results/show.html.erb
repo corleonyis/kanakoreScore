@@ -1,6 +1,6 @@
 <%= render "layouts/navbar" %>
 <div class="container" style="padding-top: 80px;">
-  <h1><%= @participant.name %> さんのページ </h1>
+  <h1><%= @name %> さんの記録 </h1>
 
   <h2 class="mt-5"> 対局結果一覧 </h2>
   <hr>
@@ -9,27 +9,27 @@
       <tr>
         <th>対局日</th>
         <th>1位</th>
-        <th></th>
+        <th>点数(獲得合計pt)</th>
         <th>2位</th>
-        <th></th>
+        <th>点数(獲得合計pt)</th>
         <th>3位</th>
-        <th></th>
+        <th>点数(獲得合計pt)</th>
         <th>4位</th>
-        <th></th>
+        <th>点数(獲得合計pt)</th>
       </tr>
     </thead>
     <tbody>
-      <% @scores.each do |score| %>
+      <% @games.each do |game| %>
         <tr>
-          <td><%= score.date %></td>
-          <td><%= participant_name(score.first_participantID) %></td>
-          <td><%= score.first_score %>点</td>
-          <td><%= participant_name(score.second_participantID) %></td>
-          <td><%= score.second_score %>点</td>
-          <td><%= participant_name(score.third_participantID) %></td>
-          <td><%= score.third_score %>点</td>
-          <td><%= participant_name(score.fourth_participantID) %></td>
-          <td><%= score.fourth_score %>点</td>
+          <td><%= game.date %></td>
+          <td><%= game.first_name %></td>
+          <td><%= game.first_score %>点 (<%= game.first_point %>pt)</td>
+          <td><%= game.second_name %></td>
+          <td><%= game.second_score %>点 (<%= game.second_point %>pt)</td>
+          <td><%= game.third_name %></td>
+          <td><%= game.third_score %>点 (<%= game.third_point %>pt)</td>
+          <td><%= game.fourth_name %></td>
+          <td><%= game.fourth_score %>点 (<%= game.fourth_point %>pt)</td>
         </tr>
       <% end %>
     </tbody>

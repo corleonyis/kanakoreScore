@@ -16,7 +16,7 @@
       <%= f.select :name, ["天和", "地和", "大三元", "大四喜", "小四喜", "四暗刻", "清老頭", "四槓子", "字一色", "緑一色", "国士無双", "九連宝燈"], { include_blank: false }, class: "form-select"%>
     </div>
     <div class="d-flex gap-3">
-      <%= link_to "戻る", participants_path, class: "btn btn-secondary" %>
+      <%= link_to "戻る", :back, class: "btn btn-secondary" %>
       <%= f.submit :"決定", class: "btn btn-primary" %>
     </div>
   <% end %>

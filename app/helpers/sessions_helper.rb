@@ -1,4 +1,5 @@
 module SessionsHelper
+  # 管理者モード関連
   def log_in(user)
     session[:user_id] = user.id
   end

@@ -3,31 +3,35 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>参加者名</th>
-        <th>ハンデ</th>
-        <th>現在の得点</th>
-        <th>現在の得点 + ハンデ</th>
-        <th>1位</th>
-        <th>2位</th>
-        <th>3位</th>
-        <th>4位</th>
-        <th>役満回数</th>
-        <th>対戦回数</th>
+        <th scope="col">順位</th>
+        <th scope="col">参加者名</th>
+        <th scope="col">ハンデ</th>
+        <th scope="col">順位ポイント(累計)</th>
+        <th scope="col">ゲームポイント(累計)</th>
+        <th scope="col">合計ポイント(累計)</th>
+        <th scope="col">1位</th>
+        <th scope="col">2位</th>
+        <th scope="col">3位</th>
+        <th scope="col">4位</th>
+        <th scope="col">役満回数</th>
+        <th scope="col">対戦回数</th>
       </tr>
     </thead>
     <tbody>
-      <% @participants.each do |participant| %>
+      <% @results.each_with_index do |result, i| %>
         <tr>
-          <td><%= link_to participant.name, result_path(participant.id) %></td>
-          <td><%= participant.handicap %></td>
-          <td><%= participant.game_point %></td>
-          <td><%= participant.total_point %></td>
-          <td><%= participant.first %></td>
-          <td><%= participant.second %></td>
-          <td><%= participant.third %></td>
-          <td><%= participant.fourth %></td>
-          <td><%= get_number_grand_slum(participant.id) %></td>
-          <td><%= participant.total_games %></td>
+          <th scope="row"><%= i+1 %>位</th>
+          <td><%= link_to result.name, result_path(result.id) %></td>
+          <td><%= result.handicap %></td>
+          <td><%= result.cumulative_rank_point %></td>
+          <td><%= result.cumulative_game_point %></td>
+          <td><%= result.cumulative_total_point %></td>
+          <td><%= result.number_of_times_first %></td>
+          <td><%= result.number_of_times_second %></td>
+          <td><%= result.number_of_times_third %></td>
+          <td><%= result.number_of_times_fourth %></td>
+          <td><%= get_number_grand_slum(result.id) %></td>
+          <td><%= result.number_of_times_played %></td>
         </tr>
       <% end %>
     </tbody>

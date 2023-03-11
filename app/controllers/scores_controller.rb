@@ -4,6 +4,12 @@ class ScoresController < ApplicationController
   # 対戦記録一覧
   def index
     @scores = Score.all
+    @participants = Participant.all
+
+    @games = []
+    @scores.each do |score|
+      @games.push(Game.new(score, @participants))
+    end
   end
 
   # 対戦記録追加
@@ -14,13 +20,6 @@ class ScoresController < ApplicationController
 
   def create
     @score = Score.create(score_params)
-
-    # 各参加者の合計スコアを更新する
-    update_participant_info(@score.first_participantID, @score.first_score, 1)     # 1位
-    update_participant_info(@score.second_participantID, @score.second_score, 2)   # 2位
-    update_participant_info(@score.third_participantID, @score.third_score, 3)     # 3位
-    update_participant_info(@score.fourth_participantID, @score.fourth_score, 4)   # 4位
-
     redirect_to scores_path
   end
 
@@ -33,19 +32,8 @@ class ScoresController < ApplicationController
   def update
     @score = Score.find(params[:id])
 
-    # この対戦記録の点数を一旦なかったことにする
-    revoke_game_point(@score.first_participantID, @score.first_score, 1)    # 1位
-    revoke_game_point(@score.second_participantID, @score.second_score, 2)  # 2位
-    revoke_game_point(@score.third_participantID, @score.third_score, 3)    # 3位
-    revoke_game_point(@score.fourth_participantID, @score.fourth_score, 4)  # 4位
-
     @score.update(score_params)
 
-    # 各参加者の合計スコアを更新する
-    update_participant_info(@score.first_participantID, @score.first_score, 1)     # 1位
-    update_participant_info(@score.second_participantID, @score.second_score, 2)   # 2位
-    update_participant_info(@score.third_participantID, @score.third_score, 3)     # 3位
-    update_participant_info(@score.fourth_participantID, @score.fourth_score, 4)   # 4位
 
     redirect_to scores_path
   end

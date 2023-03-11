@@ -4,6 +4,7 @@ class GrandSlumsController < ApplicationController
   # 役満達成者一覧
   def index
     @grand_slums = GrandSlum.all
+    @participants = Participant.all
   end
 
   # 役満達成者登録

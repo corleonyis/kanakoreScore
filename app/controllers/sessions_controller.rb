@@ -1,13 +1,14 @@
 class SessionsController < ApplicationController
 
   def new
+    session[:previous_url] = request.referer
   end
 
   def create
     user = User.find_by(name: params[:name])
     if user
       log_in(user)
-      redirect_to root_path
+      redirect_to session[:previous_url]
     else
       flash.now[:danger] = 'コードが間違っています。'
       render 'new', status: :unprocessable_entity
@@ -16,6 +17,6 @@ class SessionsController < ApplicationController
   
   def destroy
     log_out
-    redirect_to root_path, status: :see_other
+    redirect_back(fallback_location: root_path)
   end
 end

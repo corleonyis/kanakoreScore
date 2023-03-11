@@ -14,7 +14,7 @@
       <% @grand_slums.each do |grand_slum| %>
         <tr>
           <td><%= grand_slum.date %></td>
-          <td><%= participant_name(grand_slum.participant_id) %></td>
+          <td><%= get_participant_name(grand_slum.participant_id, @participants) %></td>
           <td><%= grand_slum.name %></td>
           <% if logged_in? then %>
             <td><%= link_to "編集", edit_grand_slum_path(grand_slum) %></td>

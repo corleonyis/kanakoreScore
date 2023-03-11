@@ -7,30 +7,30 @@
       <tr>
         <th>対局日</th>
         <th>1位</th>
-        <th></th>
+        <th>点数(獲得合計pt)</th>
         <th>2位</th>
-        <th></th>
+        <th>点数(獲得合計pt)</th>
         <th>3位</th>
-        <th></th>
+        <th>点数(獲得合計pt)</th>
         <th>4位</th>
-        <th></th>
+        <th>点数(獲得合計pt)</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <% @scores.each do |score| %>
+      <% @games.each do |game| %>
         <tr>
-          <td><%= score.date %></td>
-          <td><%= participant_name(score.first_participantID) %></td>
-          <td><%= score.first_score %></td>
-          <td><%= participant_name(score.second_participantID) %></td>
-          <td><%= score.second_score %></td>
-          <td><%= participant_name(score.third_participantID) %></td>
-          <td><%= score.third_score %></td>
-          <td><%= participant_name(score.fourth_participantID) %></td>
-          <td><%= score.fourth_score %></td>
+          <td><%= game.date %></td>
+          <td><%= game.first_name %></td>
+          <td><%= game.first_score %>点 (<%= game.first_point %>pt)</td>
+          <td><%= game.second_name %></td>
+          <td><%= game.second_score %>点 (<%= game.second_point %>pt)</td>
+          <td><%= game.third_name %></td>
+          <td><%= game.third_score %>点 (<%= game.third_point %>pt)</td>
+          <td><%= game.fourth_name %></td>
+          <td><%= game.fourth_score %>点 (<%= game.fourth_point %>pt)</td>
           <% if logged_in? then %>
-            <td><%= link_to "編集", edit_score_path(score) %></td>
+            <td><%= link_to "編集", edit_score_path(game.id) %></td>
           <% else %>
             <td></td>
           <% end %>
