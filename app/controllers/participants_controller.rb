@@ -23,7 +23,7 @@ class ParticipantsController < ApplicationController
 
   def update
     @participant = Participant.find(params[:id])
-
+    @participant.update(participant_params)
     redirect_to participants_path
   end
 
