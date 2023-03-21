@@ -19,8 +19,16 @@ class ScoresController < ApplicationController
   end
 
   def create
-    @score = Score.create(score_params)
-    redirect_to scores_path
+    # 1位〜4位までの点数合計をチェック
+    if check_total_score(score_params[:first_score].to_i, score_params[:second_score].to_i, score_params[:third_score].to_i, score_params[:fourth_score].to_i)
+      @score = Score.create(score_params)
+      redirect_to scores_path
+    else
+      flash.now[:danger] = 'スコアの合計点が100,000点になりません。確認してください。'
+      @score = Score.new(score_params)
+      @participants = Participant.all
+      render 'new', status: :unprocessable_entity
+    end
   end
 
   # 対戦記録編集
@@ -31,11 +39,15 @@ class ScoresController < ApplicationController
 
   def update
     @score = Score.find(params[:id])
-
-    @score.update(score_params)
-
-
-    redirect_to scores_path
+    if check_total_score(score_params[:first_score].to_i, score_params[:second_score].to_i, score_params[:third_score].to_i, score_params[:fourth_score].to_i)
+      @score.update(score_params)
+      redirect_to scores_path
+    else
+      flash.now[:danger] = 'スコアの合計点が100,000点になりません。確認してください。'
+      @score.attributes = score_params
+      @participants = Participant.all
+      render 'edit', status: :unprocessable_entity
+    end
   end
 
   # 削除
