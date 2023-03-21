@@ -70,6 +70,6 @@ Rails.application.configure do
 
   # config.hosts << "kanakorescore-p6bcvthycq-an.a.run.app"
 
-  config.hosts << "kanakorescore-p6bcvthycq-an.a.run.app"
+  # config.hosts << "kanakorescore-p6bcvthycq-an.a.run.app"
 
 end
