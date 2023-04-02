@@ -1,42 +1,98 @@
 <%= render "layouts/navbar" %>
+
 <div class="container" style="padding-top: 80px;">
-  <p class="text-start">・順位ポイント：ゲーム終了時点での順位に応じて獲得できるポイント</p>
-  <p class="text-start">・スコアポイント：ゲーム終了時点でのスコアに応じて獲得できるポイント</p>
-  <p class="text-start">・合計ポイント：順位ポイント、スコアポイント、ハンデの合計</p>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">順位</th>
-        <th scope="col">参加者名</th>
-        <th scope="col">ハンデ</th>
-        <th scope="col">順位ポイント(累計)</th>
-        <th scope="col">スコアポイント(累計)</th>
-        <th scope="col">合計ポイント(累計)</th>
-        <th scope="col">1位</th>
-        <th scope="col">2位</th>
-        <th scope="col">3位</th>
-        <th scope="col">4位</th>
-        <th scope="col">役満回数</th>
-        <th scope="col">対戦回数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @results.each_with_index do |result, i| %>
-        <tr>
-          <th scope="row"><%= i+1 %>位</th>
-          <td><%= link_to result.name, result_path(result.id) %></td>
-          <td><%= result.handicap %></td>
-          <td><%= result.cumulative_rank_point %></td>
-          <td><%= result.cumulative_game_point %></td>
-          <td><%= result.cumulative_total_point %></td>
-          <td><%= result.number_of_times_first %></td>
-          <td><%= result.number_of_times_second %></td>
-          <td><%= result.number_of_times_third %></td>
-          <td><%= result.number_of_times_fourth %></td>
-          <td><%= get_number_grand_slum(result.id) %></td>
-          <td><%= result.number_of_times_played %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+
+  <p>第1回 かなしいけどこれって麻雀なのよね杯</p>
+  <p>集計期間：2023/3/5（日）13:00 ～ 6.4実装まで</p>
+
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button
+        class="nav-link active"
+        id="nav-ranking-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-ranking"
+        type="button"
+        role="tab"
+        aria-controls="nav-ranking"
+        aria-selected="true"
+      >
+        ランキング
+      </button>
+      <button
+        class="nav-link"
+        id="nav-ranking-old-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-ranking-old"
+        type="button"
+        role="tab"
+        aria-controls="nav-ranking-old"
+        aria-selected="false"
+      >
+        集計表
+      </button>
+    </div>
+  </nav>
+
+  <div class="tab-content" id="nav-tabContent">
+    <%# ランキング %>
+    <div
+      class="tab-pane fade show active"
+      id="nav-ranking"
+      role="tabpanel"
+      aria-labelledby="nav-ranking-tab"
+    >
+      <div class="m-3">
+        <% @results.each_with_index do |result, i| %>
+          <%= render "rank", result: result, rank: i+1 %>
+        <% end %>
+      </div>
+    </div>
+    <%# 集計表 %>
+    <div
+      class="tab-pane fade"
+      id="nav-ranking-old"
+      role="tabpanel"
+      aria-labelledby="nav-ranking-old-tab"
+    >
+      <div class="container mt-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">順位</th>
+              <th scope="col">参加者名</th>
+              <th scope="col">ハンデ</th>
+              <th scope="col">順位ポイント(累計)</th>
+              <th scope="col">スコアポイント(累計)</th>
+              <th scope="col">合計ポイント(累計)</th>
+              <th scope="col">1位</th>
+              <th scope="col">2位</th>
+              <th scope="col">3位</th>
+              <th scope="col">4位</th>
+              <th scope="col">役満回数</th>
+              <th scope="col">対戦回数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @results.each_with_index do |result, i| %>
+              <tr>
+                <th scope="row"><%= i+1 %>位</th>
+                <td><%= link_to result.name, result_path(result.id) %></td>
+                <td><%= result.handicap %></td>
+                <td><%= result.cumulative_rank_point %></td>
+                <td><%= result.cumulative_game_point %></td>
+                <td><%= result.cumulative_total_point %></td>
+                <td><%= result.number_of_times_first %></td>
+                <td><%= result.number_of_times_second %></td>
+                <td><%= result.number_of_times_third %></td>
+                <td><%= result.number_of_times_fourth %></td>
+                <td><%= get_number_grand_slum(result.id) %></td>
+                <td><%= result.number_of_times_played %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
