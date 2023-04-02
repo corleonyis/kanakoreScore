@@ -1,17 +1,17 @@
 <div class="card border-light shadow mb-3">
   <div class="d-flex flex-row p-2">
-    <div class="align-self-center py-2 px-3" style="font-size:50px;width:90px"> <%= rank %> </div>
-    <div class="d-flex flex-column p-3">
+    <h3 class="align-self-center py-2 px-3 mb-0" style="font-size:30px;width:70px"> <%= rank %> </h3>
+    <div class="d-flex flex-column">
       <div class="d-flex flex-row">
-        <h3 class="bd-highlight p-2"> <%= result.name %> </h3>
+        <h5 class="bd-highlight fw-bold p-2 mb-0"> <%= result.name %> </h5>
       </div>
       <div class="d-flex flex-row">
-        <div class="bd-highlight p-2" style="font-size:20px"> <%= "#{result.cumulative_total_point} pt" %> </div>
-        <div class="bd-highlight align-self-center ps-2 py-2 d-none d-lg-block" style="font-size:15px"> ( </div>
-        <div class="bd-highlight align-self-center p-2 d-none d-lg-block" style="font-size:15px"> <%= "ハンデ：#{result.handicap} pt" %> </div>
-        <div class="bd-highlight align-self-center p-2 d-none d-lg-block" style="font-size:15px"> <%= "順位pt：#{result.cumulative_rank_point} pt" %> </div>
-        <div class="bd-highlight align-self-center p-2 d-none d-lg-block" style="font-size:15px"> <%= "スコアpt：#{result.cumulative_game_point} pt" %> </div>
-        <div class="bd-highlight align-self-center pe-2 py-2 d-none d-lg-block" style="font-size:15px"> ) </div>
+        <p class="bd-highlight fw-bold p-2 mb-0" style="font-size:15px"> <%= "#{result.cumulative_total_point} pt" %> </p>
+        <p class="bd-highlight align-self-center ps-2 py-2 mb-0 d-none d-lg-block" style="font-size:15px"> ( </p>
+        <p class="bd-highlight align-self-center p-2 mb-0 d-none d-lg-block" style="font-size:15px"> <%= "ハンデ：#{result.handicap} pt" %> </p>
+        <p class="bd-highlight align-self-center p-2 mb-0 d-none d-lg-block" style="font-size:15px"> <%= "順位pt：#{result.cumulative_rank_point} pt" %> </p>
+        <p class="bd-highlight align-self-center p-2 mb-0 d-none d-lg-block" style="font-size:15px"> <%= "スコアpt：#{result.cumulative_game_point} pt" %> </p>
+        <p class="bd-highlight align-self-center pe-2 py-2 mb-0 d-none d-lg-block" style="font-size:15px"> ) </p>
       </div>
     </div>
   </div>
