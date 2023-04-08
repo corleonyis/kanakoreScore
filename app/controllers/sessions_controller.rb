@@ -1,14 +1,17 @@
 class SessionsController < ApplicationController
 
   def new
-    session[:previous_url] = request.referer
+    # 遷移元のURLをsessionに保存
+    # session[:previous_url] = request.referer
   end
 
   def create
     user = User.find_by(name: params[:name])
     if user
       log_in(user)
-      redirect_to session[:previous_url]
+      redirect_to root_path
+      #  遷移元にリダイレクト
+      # redirect_to session[:previous_url]
     else
       flash.now[:danger] = 'コードが間違っています。'
       render 'new', status: :unprocessable_entity
